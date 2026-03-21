@@ -1,0 +1,1 @@
+This folder is for game assets like fish and background images.

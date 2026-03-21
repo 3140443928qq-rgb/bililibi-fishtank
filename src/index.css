@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body { 
+  margin: 0; 
+  background: #000; 
+  overflow: hidden; 
+  font-family: "Microsoft YaHei", sans-serif; 
+  user-select: none; 
+}
+
+canvas { 
+  display: block; 
+  cursor: grab; 
+}
+
+canvas:active { 
+  cursor: grabbing; 
+}
+
+/* UI 核心容器 - 确保它在左上角 */
+#ui-container { 
+  position: absolute; 
+  top: 10px; 
+  left: 10px; 
+  z-index: 30; 
+  color: #FFD700; 
+  pointer-events: none; 
+  width: 120px; 
+}
+
+#ui-info { 
+  background: rgba(0,0,0,0.7); 
+  padding: 8px; 
+  border-radius: 8px; 
+  pointer-events: auto; 
+}
+
+.info-row {
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+#ui-buttons { 
+  margin-top: 10px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+  pointer-events: auto; 
+}
+
+button { 
+  background: #4CAF50; 
+  color: white; 
+  border: none; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  padding: 10px; 
+  font-weight: bold; 
+  transition: 0.2s; 
+}
+
+button:hover { 
+  filter: brightness(1.2); 
+}
+
+/* 弹窗面板 - 确保居中 */
+.panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.close-x {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  color: #aaa;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+  z-index: 110;
+}
+
+.close-x:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+#panel, #shopPanel, #extractionPanel, #maintenancePanel { 
+  position: fixed; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  background: rgba(0,0,0,0.95); 
+  color: white; 
+  padding: 25px; 
+  border-radius: 15px; 
+  text-align: center; 
+  min-width: 550px; 
+  z-index: 100; 
+  border: 2px solid #FFD700; 
+  max-height: 85vh; 
+  overflow-y: auto; 
+  display: none;
+}
+
+#extractionPanel { border-color: #9b59b6; }
+#maintenancePanel { border-color: #3498db; }
+
+.extract-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; }
+.stat-line { margin: 10px 0; font-size: 15px; text-align: left; }
+
+.shop-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
+.tab-header { display: flex; gap: 5px; margin-bottom: 15px; }
+.tab-btn { flex: 1; padding: 10px; background: #444; color: #ccc; border: none; cursor: pointer; border-radius: 5px; }
+.tab-btn.active { background: #FFD700; color: #000; font-weight: bold; }
+
+#game-toast { 
+  position: fixed; 
+  bottom: 100px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  background: rgba(231, 76, 60, 0.9); 
+  color: white; 
+  padding: 10px 20px; 
+  border-radius: 8px; 
+  z-index: 200; 
+  display: none; 
+}
+
+/* 突变点显示 */
+#mPoint-display { 
+  position: absolute; 
+  top: 10px; 
+  left: 150px; 
+  color: #9b59b6; 
+  background: rgba(0,0,0,0.7); 
+  padding: 8px; 
+  border-radius: 8px; 
+  z-index: 30; 
+}
+
+/* 养料显示 */
+#nurture-display {
+  position: absolute; 
+  top: 10px; 
+  left: 300px; 
+  color: #2ecc71; 
+  background: rgba(0,0,0,0.7); 
+  padding: 8px; 
+  border-radius: 8px; 
+  z-index: 30;
+}
+
+/* 大撒币 */
+#treasure-box { 
+  position: absolute; 
+  bottom: 20px; 
+  right: 20px; 
+  z-index: 40; 
+  background: rgba(0,0,0,0.8); 
+  color: #FFD700; 
+  padding: 15px 25px; 
+  border-radius: 12px; 
+  cursor: pointer; 
+  border: 1px solid #FFD700; 
+}
+
+.bar-bg { width: 100%; height: 10px; background: #333; border-radius: 5px; margin-top: 5px; overflow: hidden; }
+.bar-fill { height: 100%; transition: width 0.3s; }
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
