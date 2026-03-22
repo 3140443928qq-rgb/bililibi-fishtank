@@ -8,6 +8,7 @@ export interface FishConfig {
   h: number;
   scale: number;
   mPrice?: number;
+  moveMode?: string;
 }
 
 export interface DecoConfig {
@@ -23,7 +24,7 @@ export interface DecoEffect {
   base: number;
 }
 
-export type TabType = 'fish' | 'deco' | 'special';
+export type TabType = 'fish' | 'deco' | 'upgrade';
 
 export interface Achievement {
   id: string;
@@ -77,6 +78,11 @@ export interface FishData {
   opacity?: number;
   hitFlash?: number;
   isSpecial?: boolean;
+  atk: number;
+  affixes: string[];
+  level: number;
+  xp: number;
+  wanderAngle?: number;
 }
 
 export interface DecoData {
@@ -85,6 +91,8 @@ export interface DecoData {
   y: number;
   level: number;
   nurtureEaten: number;
+  hp: number;
+  maxHP: number;
 }
 
 export interface Particle {

@@ -22,34 +22,41 @@ canvas:active {
   cursor: grabbing; 
 }
 
-/* UI 核心容器 - 确保它在左上角 */
+/* UI 核心容器 */
 #ui-container { 
   position: absolute; 
-  top: 10px; 
-  left: 10px; 
+  top: 15px; 
+  left: 15px; 
   z-index: 30; 
-  color: #FFD700; 
   pointer-events: none; 
-  width: 120px; 
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 #ui-info { 
-  background: rgba(0,0,0,0.7); 
-  padding: 8px; 
-  border-radius: 8px; 
+  background: rgba(0,0,0,0.8); 
+  backdrop-filter: blur(8px);
+  padding: 12px 18px; 
+  border-radius: 16px; 
   pointer-events: auto; 
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  min-width: 160px;
 }
 
 .info-row {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   white-space: nowrap;
+  font-size: 14px;
+  color: #fff;
 }
 
 #ui-buttons { 
-  margin-top: 10px; 
+  margin-top: 0; 
   display: flex; 
   flex-direction: column; 
-  gap: 8px; 
+  gap: 10px; 
   pointer-events: auto; 
 }
 
@@ -141,28 +148,9 @@ button:hover {
   display: none; 
 }
 
-/* 突变点显示 */
-#mPoint-display { 
-  position: absolute; 
-  top: 10px; 
-  left: 150px; 
-  color: #9b59b6; 
-  background: rgba(0,0,0,0.7); 
-  padding: 8px; 
-  border-radius: 8px; 
-  z-index: 30; 
-}
-
-/* 养料显示 */
-#nurture-display {
-  position: absolute; 
-  top: 10px; 
-  left: 300px; 
-  color: #2ecc71; 
-  background: rgba(0,0,0,0.7); 
-  padding: 8px; 
-  border-radius: 8px; 
-  z-index: 30;
+/* 突变点显示 - 已整合到按钮，此处保留基础样式或移除 */
+#mPoint-display, #nurture-display { 
+  display: none;
 }
 
 /* 大撒币 */

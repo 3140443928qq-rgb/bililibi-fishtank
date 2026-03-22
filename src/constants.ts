@@ -21,11 +21,17 @@ export const FISH_CONFIG: Record<string, FishConfig> = {
   '毛毛虫': { price: 80, convert: 20, src: '16.png', cols: 1, rows: 1, w: 355, h: 226, scale: 3.9 },
   '牆蝈蛙蛤蛤': { price: 350, convert: 20, src: 'fish27.png', cols: 1, rows: 1, w: 384, h: 384, scale: 2.3 },
   '徐驰': { price: 15, convert: 20, src: '30.png', cols: 1, rows: 1, w: 128, h: 62, scale: 1.4 },
+  '黄金螺': { price: 40, convert: 5, src: 'snail_sprite.png', cols: 4, rows: 1, w: 512, h: 128, scale: 0.8, moveMode: 'crawl' },
+  '樱花虾': { price: 80, convert: 8, src: 'shrimp_sprite.png', cols: 4, rows: 1, w: 512, h: 128, scale: 1.0, moveMode: 'crawl' },
+  '斜纹炮弹': { price: 450, convert: 7, src: 'triggerfish1sheet.png', cols: 4, rows: 1, w: 512, h: 128, scale: 1.3 },
+  '海星': { price: 120, convert: 12, src: 'snail_sprite.png', cols: 4, rows: 1, w: 512, h: 128, scale: 0.9, moveMode: 'crawl' },
+  '清道夫': { price: 180, convert: 10, src: 'fish9.png', cols: 2, rows: 2, w: 128, h: 128, scale: 1.0 },
 };
 
 export const SPECIAL_FISH: Record<string, FishConfig> = {
   '猎手鱼': { mPrice: 25, price: 0, convert: 5, src: 'fish16.png', cols: 2, rows: 2, w: 126, h: 103, scale: 1.8 },
-  '嗜血鲨': { mPrice: 100, price: 0, convert: 3, src: 'fish20.png', cols: 2, rows: 2, w: 324, h: 156, scale: 2.5 }
+  '嗜血鲨': { mPrice: 100, price: 0, convert: 3, src: 'fish20.png', cols: 2, rows: 2, w: 324, h: 156, scale: 2.5 },
+  '地狱魔鬼鱼': { mPrice: 100, price: 0, convert: 3, src: 'fish20.png', cols: 2, rows: 2, w: 324, h: 156, scale: 2.5 }
 };
 
 export const DECO_CONFIG: Record<string, DecoConfig> = {
