@@ -49,7 +49,7 @@ const UI: React.FC<UIProps> = ({
         ...prev,
         coins: prev.coins - prev.upgradeFeedCost,
         feedCount: prev.feedCount + 1,
-        upgradeFeedCost: prev.upgradeFeedCost + 50
+        upgradeFeedCost: prev.upgradeFeedCost + 10
       }));
     } else showToast("金币不足或已达上限");
   };
@@ -60,7 +60,7 @@ const UI: React.FC<UIProps> = ({
         ...prev,
         coins: prev.coins - prev.capUpgradeCost,
         maxFishes: prev.maxFishes + 1,
-        capUpgradeCost: prev.capUpgradeCost + 100
+        capUpgradeCost: prev.capUpgradeCost + 20
       }));
     } else showToast("金币不足或已达上限");
   };
@@ -71,7 +71,7 @@ const UI: React.FC<UIProps> = ({
         ...prev,
         coins: prev.coins - prev.decoUpgradeCost,
         maxDecos: prev.maxDecos + 1,
-        decoUpgradeCost: prev.decoUpgradeCost + 100
+        decoUpgradeCost: prev.decoUpgradeCost + 20
       }));
     } else showToast("金币不足或已达上限");
   };

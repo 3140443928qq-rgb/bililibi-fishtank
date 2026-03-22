@@ -5,21 +5,34 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
+:root {
+  --ds-cyan: #a8f0ff;
+  --ds-cyan-dim: rgba(168, 240, 255, 0.3);
+  --ds-cyan-glow: rgba(168, 240, 255, 0.6);
+  --ds-red: #ff3e3e;
+  --ds-red-glow: rgba(255, 62, 62, 0.6);
+  --ds-gold: #c5a059;
+  --ds-bg: rgba(0, 10, 20, 0.85);
+  --ds-border: rgba(168, 240, 255, 0.2);
+  --ds-font: 'Inter', 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
 body { 
   margin: 0; 
   background: #000; 
   overflow: hidden; 
-  font-family: "Microsoft YaHei", sans-serif; 
+  font-family: var(--ds-font); 
   user-select: none; 
+  letter-spacing: 0.05em;
 }
 
 canvas { 
   display: block; 
-  cursor: grab; 
+  cursor: crosshair; 
 }
 
 canvas:active { 
-  cursor: grabbing; 
+  cursor: crosshair; 
 }
 
 /* UI 核心容器 */
@@ -35,21 +48,23 @@ canvas:active {
 }
 
 #ui-info { 
-  background: rgba(0,0,0,0.8); 
+  background: var(--ds-bg); 
   backdrop-filter: blur(8px);
   padding: 12px 18px; 
-  border-radius: 16px; 
+  border-radius: 4px; 
   pointer-events: auto; 
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  border: 1px solid var(--ds-border);
+  box-shadow: 0 0 20px rgba(0,0,0,0.8), inset 0 0 10px var(--ds-cyan-dim);
   min-width: 160px;
 }
 
 .info-row {
   margin-bottom: 6px;
   white-space: nowrap;
-  font-size: 14px;
-  color: #fff;
+  font-size: 12px;
+  color: var(--ds-cyan);
+  text-shadow: 0 0 5px var(--ds-cyan-glow);
+  letter-spacing: 0.1em;
 }
 
 #ui-buttons { 
@@ -61,18 +76,22 @@ canvas:active {
 }
 
 button { 
-  background: #4CAF50; 
-  color: white; 
-  border: none; 
-  border-radius: 8px; 
+  background: rgba(0, 20, 40, 0.6); 
+  color: var(--ds-cyan); 
+  border: 1px solid var(--ds-border); 
+  border-radius: 2px; 
   cursor: pointer; 
-  padding: 10px; 
-  font-weight: bold; 
-  transition: 0.2s; 
+  padding: 8px 16px; 
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease; 
+  text-transform: uppercase;
 }
 
 button:hover { 
-  filter: brightness(1.2); 
+  background: var(--ds-cyan); 
+  color: #000; 
+  box-shadow: 0 0 15px var(--ds-cyan-glow); 
 }
 
 /* 弹窗面板 - 确保居中 */
@@ -82,11 +101,12 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 100;
+  backdrop-filter: blur(4px);
 }
 
 .close-x {
@@ -94,16 +114,17 @@ button:hover {
   top: 10px;
   right: 15px;
   font-size: 24px;
-  color: #aaa;
+  color: var(--ds-cyan);
+  opacity: 0.5;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 300;
   transition: 0.2s;
   z-index: 110;
 }
 
 .close-x:hover {
-  color: #fff;
-  transform: scale(1.2);
+  opacity: 1;
+  text-shadow: 0 0 10px var(--ds-cyan-glow);
 }
 
 #panel, #shopPanel, #extractionPanel, #maintenancePanel { 
@@ -111,41 +132,46 @@ button:hover {
   top: 50%; 
   left: 50%; 
   transform: translate(-50%, -50%); 
-  background: rgba(0,0,0,0.95); 
-  color: white; 
+  background: var(--ds-bg); 
+  color: var(--ds-white); 
   padding: 25px; 
-  border-radius: 15px; 
+  border-radius: 4px; 
   text-align: center; 
   min-width: 550px; 
   z-index: 100; 
-  border: 2px solid #FFD700; 
+  border: 1px solid var(--ds-border); 
+  box-shadow: 0 0 30px rgba(0,0,0,0.9), inset 0 0 20px var(--ds-cyan-dim);
   max-height: 85vh; 
   overflow-y: auto; 
   display: none;
 }
 
-#extractionPanel { border-color: #9b59b6; }
-#maintenancePanel { border-color: #3498db; }
+#extractionPanel { border-color: rgba(155, 89, 182, 0.5); box-shadow: 0 0 30px rgba(0,0,0,0.9), inset 0 0 20px rgba(155, 89, 182, 0.2); }
+#maintenancePanel { border-color: var(--ds-border); }
 
-.extract-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; }
-.stat-line { margin: 10px 0; font-size: 15px; text-align: left; }
+.extract-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; background: rgba(0,20,40,0.4); padding: 10px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.05); }
+.stat-line { margin: 10px 0; font-size: 13px; text-align: left; color: #ccc; letter-spacing: 0.05em; }
 
 .shop-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 10px; }
-.tab-header { display: flex; gap: 5px; margin-bottom: 15px; }
-.tab-btn { flex: 1; padding: 10px; background: #444; color: #ccc; border: none; cursor: pointer; border-radius: 5px; }
-.tab-btn.active { background: #FFD700; color: #000; font-weight: bold; }
+.tab-header { display: flex; gap: 5px; margin-bottom: 15px; border-bottom: 1px solid var(--ds-border); padding-bottom: 10px; }
+.tab-btn { flex: 1; padding: 8px; background: transparent; color: var(--ds-cyan); opacity: 0.5; border: 1px solid transparent; cursor: pointer; border-radius: 2px; font-size: 12px; letter-spacing: 0.1em; }
+.tab-btn.active { background: rgba(168, 240, 255, 0.1); opacity: 1; border-color: var(--ds-border); box-shadow: inset 0 0 10px var(--ds-cyan-dim); text-shadow: 0 0 5px var(--ds-cyan-glow); }
 
 #game-toast { 
   position: fixed; 
   bottom: 100px; 
   left: 50%; 
   transform: translateX(-50%); 
-  background: rgba(231, 76, 60, 0.9); 
-  color: white; 
+  background: rgba(0, 10, 20, 0.9); 
+  color: var(--ds-cyan); 
+  border: 1px solid var(--ds-cyan);
+  box-shadow: 0 0 15px var(--ds-cyan-glow);
   padding: 10px 20px; 
-  border-radius: 8px; 
+  border-radius: 2px; 
   z-index: 200; 
   display: none; 
+  font-size: 12px;
+  letter-spacing: 0.1em;
 }
 
 /* 突变点显示 - 已整合到按钮，此处保留基础样式或移除 */
@@ -159,29 +185,64 @@ button:hover {
   bottom: 20px; 
   right: 20px; 
   z-index: 40; 
-  background: rgba(0,0,0,0.8); 
-  color: #FFD700; 
+  background: var(--ds-bg); 
+  color: var(--ds-gold); 
   padding: 15px 25px; 
-  border-radius: 12px; 
+  border-radius: 2px; 
   cursor: pointer; 
-  border: 1px solid #FFD700; 
+  border: 1px solid rgba(197, 160, 89, 0.5); 
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
 }
 
-.bar-bg { width: 100%; height: 10px; background: #333; border-radius: 5px; margin-top: 5px; overflow: hidden; }
+.bar-bg { width: 100%; height: 6px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0; margin-top: 5px; overflow: hidden; }
 .bar-fill { height: 100%; transition: width 0.3s; }
+
+/* Glitch/Shake for Hell Tide */
+@keyframes ds-glitch {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 1px) }
+  40% { transform: translate(-1px, -1px) }
+  60% { transform: translate(2px, 1px) }
+  80% { transform: translate(1px, -1px) }
+  100% { transform: translate(0) }
+}
+
+.ds-shake {
+  animation: ds-glitch 0.2s infinite;
+}
+
+.ds-scanline {
+  position: relative;
+  overflow: hidden;
+}
+.ds-scanline::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 2px;
+  background: var(--ds-cyan);
+  opacity: 0.3;
+  animation: scan 3s infinite linear;
+  pointer-events: none;
+}
+@keyframes scan {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100px); opacity: 0; }
+}
 
 @layer utilities {
   .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.3);
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    background: var(--ds-cyan-dim);
+    border-radius: 0;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: var(--ds-cyan);
   }
 }

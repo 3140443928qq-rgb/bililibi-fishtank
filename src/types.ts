@@ -9,6 +9,7 @@ export interface FishConfig {
   scale: number;
   mPrice?: number;
   moveMode?: string;
+  isKeyZheng?: boolean;
 }
 
 export interface DecoConfig {

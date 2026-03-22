@@ -21,11 +21,12 @@ export const FISH_CONFIG: Record<string, FishConfig> = {
   '毛毛虫': { price: 80, convert: 20, src: '16.png', cols: 1, rows: 1, w: 355, h: 226, scale: 3.9 },
   '牆蝈蛙蛤蛤': { price: 350, convert: 20, src: 'fish27.png', cols: 1, rows: 1, w: 384, h: 384, scale: 2.3 },
   '徐驰': { price: 15, convert: 20, src: '30.png', cols: 1, rows: 1, w: 128, h: 62, scale: 1.4 },
-  '黄金螺': { price: 40, convert: 5, src: 'snail_sprite.png', cols: 4, rows: 1, w: 512, h: 128, scale: 0.8, moveMode: 'crawl' },
+  '黄金螺': { price: 40, convert: 5, src: 'snail_sprite.png', cols: 4, rows: 1, w: 512, h: 128, scale: 3.0, moveMode: 'crawl' },
   '樱花虾': { price: 80, convert: 8, src: 'shrimp_sprite.png', cols: 4, rows: 1, w: 512, h: 128, scale: 1.0, moveMode: 'crawl' },
   '斜纹炮弹': { price: 450, convert: 7, src: 'triggerfish1sheet.png', cols: 4, rows: 1, w: 512, h: 128, scale: 1.3 },
-  '海星': { price: 120, convert: 12, src: 'snail_sprite.png', cols: 4, rows: 1, w: 512, h: 128, scale: 0.9, moveMode: 'crawl' },
+  '海星': { price: 120, convert: 12, src: 'snail_sprite.png', cols: 4, rows: 1, w: 512, h: 128, scale: 4.0, moveMode: 'crawl' },
   '清道夫': { price: 180, convert: 10, src: 'fish9.png', cols: 2, rows: 2, w: 128, h: 128, scale: 1.0 },
+  '多伦多方脸': { price: 50, convert: 5, src: 'face.png', cols: 1, rows: 1, w: 128, h: 128, scale: 1.0, isKeyZheng: true }
 };
 
 export const SPECIAL_FISH: Record<string, FishConfig> = {
@@ -62,3 +63,13 @@ export const DECO_EFFECTS: Record<string, DecoEffect> = {
   '佛像': { desc: '功德：定期转化金币', type: 'gold_gen', base: 10 },
   '李老师': { desc: '成长转化提升', type: 'growth_buff', base: 1 }
 };
+
+export const TORONTO_QUOTES = [
+  "七步民主，势在必行。",
+  "虚假合意，不过是权力的遮羞布。",
+  "威权联盟，终将走向自我毁灭。",
+  "中国房地产合法性危机，是体制的必然结果。",
+  "权力不受制约，必然导致腐败。",
+  "我们必须看清真相，不要被虚假叙事所蒙蔽。",
+  "喜欢呢请多多点赞我是多伦多方脸我们下期再见!"
+];
