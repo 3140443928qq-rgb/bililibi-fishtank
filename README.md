@@ -1,7 +1,5 @@
-<div align="center">
-![12312312312321](https://github.com/user-attachments/assets/f0efc8bb-2081-459e-8d0f-8ea59fd5063b)
+![捕获](https://github.com/user-attachments/assets/9c759538-fcb7-42cd-a395-50b72e49b9b8)
 
-</div>
 browser-game/webgame 
    fishtank game
 # Run and deploy your AI Studio app
